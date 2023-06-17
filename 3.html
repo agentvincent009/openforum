@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Forum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      padding-top: 50px;
+    }
+
+    #comment-form {
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #comment-form h2 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+
+    #comment-form input[type="text"],
+    #comment-form input[type="email"],
+    #comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    #comment-form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #comment-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .comment {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #EFEFEF;
+      border-radius: 4px;
+    }
+
+    .comment p {
+      margin: 0;
+    }
+
+    .comment .email {
+      color: #999;
+      font-size: 0.9em;
+    }
+
+    .image-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    img {
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+  <script>
+    function saveComment() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var comment = document.getElementById("comment").value;
+
+      var comments = localStorage.getItem("comments");
+      if (!comments) {
+        comments = [];
+      } else {
+        comments = JSON.parse(comments);
+      }
+
+      var newComment = {
+        name: name,
+        email: email,
+        comment: comment
+      };
+
+      comments.push(newComment);
+      localStorage.setItem("comments", JSON.stringify(comments));
+
+      displayComments();
+      document.getElementById("comment-form").reset();
+    }
+
+    function displayComments() {
+      var commentList = document.getElementById("comment-list");
+      commentList.innerHTML = "";
+
+      var comments = localStorage.getItem("comments");
+      if (comments) {
+        comments = JSON.parse(comments);
+        for (var i = 0; i < comments.length; i++) {
+          var comment = comments[i];
+          var commentDiv = document.createElement("div");
+          commentDiv.className = "comment";
+          commentDiv.innerHTML = "<p>" + comment.comment + "</p><p class='email'>" + comment.email + "</p>";
+          commentList.appendChild(commentDiv);
+        }
+      }
+    }
+  </script>
+</head>
+<body onload="displayComments()">
+  <h1>Open Forum</h1>
+
+  <div id="comment-form">
+    <h2>Add a Comment</h2>
+    <form onsubmit="event.preventDefault(); saveComment();">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="comment" placeholder="Your Comment" required></textarea>
+      <input type="submit" value="Submit Comment">
+    </form>
+  </div>
+
+  <div id="comment-list">
+    <h2>Comments</h2>
+  </div>
+
+  <div class="image-container">
+   
+
+<center><img alt="Open photo" class="x1lliihq x193iq5w x5yr21d xh8yej3" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/343393579_1396384694429293_2441017607617303995_n.jpg?stp=dst-jpg_s206x206&amp;_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=aee45a&amp;_nc_ohc=Ah_pi3uMnpYAX-H_wnl&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_ht=scontent.xx&amp;oh=03_AdRB_MwAMY0Hk7dTwk24vSWuwVGOTE-z1dX6JvVkmYhO2Q&amp;oe=64B4EA2C" style="display: block; max-height: 1000px; max-width: 1000%;"></center>
+
+<left><img alt="Open photo" class="x1lliihq x193iq5w x5yr21d xh8yej3" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/351485595_222293890691506_3350788201622687968_n.jpg?stp=dst-jpg_p206x206&amp;_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=aee45a&amp;_nc_ohc=vDDyQIQspDEAX_ejtgo&amp;_nc_oc=AQkUmq5V916RqNthRNjXN8ZOgsSfl7LnEHoXwkIS3Mggnb-bC8YifKjW4Du2J2mSkWBPYWQnlb7zZMvlTed7awFy&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_ht=scontent.xx&amp;oh=03_AdQOuU14UAnIpIOloxamo3cY6CNwpsFfHYZwVhvUr7BRLw&amp;oe=64B4C50D" style="display: block; max-height: 200px; max-width: 100%;"></left>
+
+<center><img alt="Open photo" class="x1lliihq x193iq5w x5yr21d xh8yej3" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/351562599_3130656197240015_22933244477263224_n.jpg?stp=dst-jpg_p206x206&amp;_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=aee45a&amp;_nc_ohc=gwEgWLK8bwwAX_JnGcS&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_ht=scontent.xx&amp;oh=03_AdRfSuwyd41kkwbmbtLGbFbKAORcthpnWoomoApiDASw9g&amp;oe=64B4C50A" style="display: block; max-height: 200px; max-width: 100%;"></center>
+  </div>
+</body>
+</html>
